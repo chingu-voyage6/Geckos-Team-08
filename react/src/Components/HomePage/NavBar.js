@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "../../Components/App.css";
 
-import { Menu, Segment } from "semantic-ui-react";
-
-const colors = ["teal"];
+import { Menu, Segment, Button } from "semantic-ui-react";
 
 class navBar extends Component {
   state = {
@@ -13,11 +11,10 @@ class navBar extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { color } = this.props;
     const { activeItem } = this.state;
     return (
       <Segment inverted>
-        <Menu color={color} inverted pointing secondary>
+        <Menu inverted pointing secondary>
           <Menu.Item
             name="Home"
             active={activeItem === "Home"}
@@ -36,19 +33,19 @@ class navBar extends Component {
 
           <Menu.Menu position="right">
             <Menu.Item
+              name="signin"
+              active={activeItem === "signin"}
+              onClick={this.handleItemClick}
+            >
+              Sign In
+            </Menu.Item>
+
+            <Menu.Item
               name="signup"
               active={activeItem === "signup"}
               onClick={this.handleItemClick}
             >
               Sign Up
-            </Menu.Item>
-
-            <Menu.Item
-              name="Register"
-              active={activeItem === "Register"}
-              onClick={this.handleItemClick}
-            >
-              Register
             </Menu.Item>
           </Menu.Menu>
         </Menu>

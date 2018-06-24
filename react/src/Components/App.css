@@ -1,0 +1,17 @@
+.ui.inverted.segment,
+.ui.primary.inverted.segment {
+  background-color: #004c4c;
+}
+
+.ui.secondary.inverted.pointing.menu {
+  font-size: 25px;
+  border-width: 1px;
+  border-color: #004c4c;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.ui.secondary.inverted.menu .link.item,
+.ui.secondary.inverted.menu a.item {
+  color: #008080 !important;
+}

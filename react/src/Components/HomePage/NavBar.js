@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../Components/App.css";
 
-import { Menu, Segment, Button } from "semantic-ui-react";
+import { Menu, Segment, Header } from "semantic-ui-react";
 
 class navBar extends Component {
   state = {
@@ -13,7 +13,10 @@ class navBar extends Component {
   render() {
     const { activeItem } = this.state;
     return (
-      <Segment inverted>
+      <Segment as="h4" color={"blue"} inverted>
+        <Header as="h4" floated="left">
+          Chingu Coders
+        </Header>
         <Menu inverted pointing secondary>
           <Menu.Item
             name="Home"

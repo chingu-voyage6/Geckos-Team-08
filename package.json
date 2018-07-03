@@ -1,24 +1,26 @@
 {
-  "name": "v6geckos8_1",
-  "version": "1.0.0",
-  "description": "Web app for Chingu Dev Project Ideas",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "O M Hix",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.0",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "validator": "^10.4.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.17.5"
-  }
+	"name": "v6geckos8_1",
+	"version": "1.0.0",
+	"description": "Web app for Chingu Dev Project Ideas",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js"
+	},
+	"author": "O M Hix",
+	"license": "MIT",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.18.3",
+		"eslint": "^5.0.1",
+		"express": "^4.16.3",
+		"jsonwebtoken": "^8.3.0",
+		"mongoose": "^5.2.0",
+		"passport": "^0.4.0",
+		"passport-jwt": "^4.0.0",
+		"validator": "^10.4.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.17.5"
+	}
 }

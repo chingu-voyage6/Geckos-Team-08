@@ -91,7 +91,11 @@ router.post('/login', (req, res, next) => {
 // @desc      Return current client
 // @access    Private
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-	res.json({ Status: 'hit any key to continue' });
+	const name = req.body.name;
+	const email = req.body.email;
+
+	res.json('touch any key to continue..');
+	next();
 });
 
 module.exports = router;

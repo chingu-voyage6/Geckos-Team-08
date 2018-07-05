@@ -4,6 +4,8 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
+const passport = require('passport');
+const verifyToken = require('../../config/verifyToken');
 
 // Load Client model
 const Client = require('../../models/Client');
@@ -52,7 +54,7 @@ router.post('/register', (req, res) => {
 // @clients   POST api/clients/login
 // @desc      Log in client / Return JWT token route
 // @access    Public
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
 	const email = req.body.email;
 	const password = req.body.password;
 
@@ -69,18 +71,27 @@ router.post('/login', (req, res) => {
 				// Client matched; Create JWT payload
 				const payload = { id: client.id, name: client.name, avatar: client.avatar };
 
-				// Sign token
+				// Sign Token, 3600 = 1 minute in milliseconds
 				jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
 					res.json({
 						success: true,
 						token: 'Bearer ' + token
 					});
+					//req.clientId = decoded.id;
+					next();
 				});
 			} else {
 				return res.status(400).json({ password: 'Password incorrect' });
 			}
 		});
 	});
+});
+
+// @route     GET api/clients/current
+// @desc      Return current client
+// @access    Private
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+	res.json({ Status: 'hit any key to continue' });
 });
 
 module.exports = router;

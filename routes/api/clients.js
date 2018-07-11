@@ -1,11 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const apiRouter = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
-const verifyToken = require('../../config/verifyToken');
+
+// Load Input Validation
+const validateRegisterInput = require('../../validation/register');
 
 // Load Client model
 const Client = require('../../models/Client');
@@ -13,12 +15,19 @@ const Client = require('../../models/Client');
 // @clients   GET api/clients/test
 // @desc      Tests clients' route
 // @access    Public
-router.get('/test', (req, res) => res.json({ msg: 'Clients route ok!' }));
+apiRouter.get('/test', (req, res) => res.json({ msg: 'Clients route ok!' }));
 
 // @clients   POST api/clients/register
 // @desc      Register client route
 // @access    Public
-router.post('/register', (req, res) => {
+apiRouter.post('/register', (req, res) => {
+	const { errors, isValid } = validateRegisterInput(req.body);
+
+	// Check Validation
+	if (!isValid) {
+		return res.status(400).json(errors);
+	}
+
 	Client.findOne({
 		email: req.body.email
 	}).then((client) => {
@@ -54,7 +63,7 @@ router.post('/register', (req, res) => {
 // @clients   POST api/clients/login
 // @desc      Log in client / Return JWT token route
 // @access    Public
-router.post('/login', (req, res, next) => {
+apiRouter.post('/login', (req, res, next) => {
 	const email = req.body.email;
 	const password = req.body.password;
 
@@ -77,7 +86,7 @@ router.post('/login', (req, res, next) => {
 						success: true,
 						token: 'Bearer ' + token
 					});
-					//req.clientId = decoded.id;
+					//req.client.id = decoded.id;
 					next();
 				});
 			} else {
@@ -90,7 +99,7 @@ router.post('/login', (req, res, next) => {
 // @route     GET api/clients/current
 // @desc      Return current client
 // @access    Private
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+apiRouter.get('/current', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 	const name = req.body.name;
 	const email = req.body.email;
 
@@ -98,4 +107,4 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 	next();
 });
 
-module.exports = router;
+module.exports = apiRouter;

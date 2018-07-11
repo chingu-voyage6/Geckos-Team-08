@@ -1,9 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const apiRouter = express.Router();
+const mongoose = require('mongoose');
+const passport = require('passport');
 
 // @clients   GET api/org/test
 // @desc      Tests organisation (clients') profile route
 // @access    Public
-router.get('/test', (req, res) => res.json({ msg: 'Organisation profile route ok!' }));
+apiRouter.get('/test', (req, res) => res.json({ msg: 'Organisation profile route ok!' }));
 
-module.exports = router;
+module.exports = apiRouter;

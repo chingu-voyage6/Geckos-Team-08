@@ -116,4 +116,4 @@ const devProfileSchema = new Schema({
 	}
 });
 
-module.exports = devProfile = mongoose.model('devProfiles', devProfileSchema);
+module.exports = devProfile = mongoose.model('devProfile', devProfileSchema);

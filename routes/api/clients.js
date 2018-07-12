@@ -32,9 +32,8 @@ apiRouter.post('/register', (req, res) => {
 		email: req.body.email
 	}).then((client) => {
 		if (client) {
-			return res.status(400).json({
-				email: 'Email already exists'
-			});
+			errors.email = 'Email already exists';
+			return res.status(400).json(errors);
 		} else {
 			const avatar = gravatar.url(req.body.email, {
 				s: '200', // Size

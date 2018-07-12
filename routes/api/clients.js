@@ -6,8 +6,10 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-// Load Input Validation
+// Load Input Validation for registering client
 const validateRegisterInput = require('../../validation/register');
+// Load Input Validation for login of client
+const validateLoginInput = require('../../validation/login');
 
 // Load Client model
 const Client = require('../../models/Client');
@@ -63,6 +65,13 @@ apiRouter.post('/register', (req, res) => {
 // @desc      Log in client / Return JWT token route
 // @access    Public
 apiRouter.post('/login', (req, res, next) => {
+	const { errors, isValid } = validateLoginInput(req.body);
+
+	// Check Validation
+	if (!isValid) {
+		return res.status(400).json(errors);
+	}
+
 	const email = req.body.email;
 	const password = req.body.password;
 

@@ -8,6 +8,7 @@ const passport = require('passport');
 
 // Load Input Validation for registering client
 const validateRegisterInput = require('../../validation/register');
+
 // Load Input Validation for login of client
 const validateLoginInput = require('../../validation/login');
 
@@ -79,7 +80,8 @@ apiRouter.post('/login', (req, res, next) => {
 	Client.findOne({ email }).then((client) => {
 		// Check for client
 		if (!client) {
-			return res.status(404).json({ email: 'Client not found' });
+			errors.email = 'Client not found';
+			return res.status(404).json(errors);
 		}
 
 		// Check password
@@ -98,7 +100,8 @@ apiRouter.post('/login', (req, res, next) => {
 					next();
 				});
 			} else {
-				return res.status(400).json({ password: 'Password incorrect' });
+				errors.password = 'Password incorrect';
+				return res.status(400).json(errors);
 			}
 		});
 	});

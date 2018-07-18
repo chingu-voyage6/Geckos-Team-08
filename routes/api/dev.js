@@ -5,6 +5,7 @@ const passport = require('passport');
 
 // Load Validation
 const validatedevProfileInput = require('../../validation/dev-profile');
+const validateExperienceInput = require('../../validation/experience');
 
 // Load devProfile model
 const devProfile = require('../../models/devProfile');
@@ -92,6 +93,37 @@ apiRouter.post('/', passport.authenticate('jwt', { session: false }), (req, res,
 				new devProfile(devFields).save().then((dev) => res.json(dev));
 			});
 		}
+	});
+});
+
+// @clients   POST api/dev profile
+// @desc      Create or edit developer profile route
+// @access    Private
+apiRouter.post('/experience', passport.authenticate('jwt', { session: false }), (req, res) => {
+	const { errors, isValid } = validateExperienceInput(req.body);
+
+	// Check Validation
+	if (!isValid) {
+		// Return any errors with status 400
+		return res.status(400).json(errors);
+	}
+
+	devProfile.findOne({ client: req.client.id }).then((dev) => {
+		const newExp = {
+			title: req.body.title, // Return here to work on ENUM options
+			company: req.body.company,
+			location: req.body.location,
+			from: req.body.from,
+			to: req.body.to,
+			current: req.body.current,
+			description: req.body.description
+		};
+
+		// Add to experience array - unshift used instead of push so data
+		dev.experience.unshift(newExp); // can be added at beginning
+
+		// Save experience
+		dev.save().then((dev) => res.json(dev));
 	});
 });
 

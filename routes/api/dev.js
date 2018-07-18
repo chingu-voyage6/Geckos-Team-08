@@ -96,8 +96,8 @@ apiRouter.post('/', passport.authenticate('jwt', { session: false }), (req, res,
 	});
 });
 
-// @clients   POST api/dev profile
-// @desc      Create or edit developer profile route
+// @clients   POST api/dev experience
+// @desc      Add experience to developer profile route
 // @access    Private
 apiRouter.post('/experience', passport.authenticate('jwt', { session: false }), (req, res) => {
 	const { errors, isValid } = validateExperienceInput(req.body);

@@ -3,19 +3,26 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const seekProfileSchema = new Schema({
-	client: {
-		type: Schema.Types.ObjectId,
-		ref: 'devProfiles'
-	},
-	clienthandleid: {
-		type: String
-	},
-	jobtitle: {
-		type: String
-	},
-	jobdescription: {
-		type: String,
-		required: true
+	_id: new mongoose.Schema.Types.ObjectId(),
+	jobdetails: {
+		title: String,
+		organisation: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'orgProfile'
+			}
+		],
+		description: {
+			title: String,
+			required: 'Description of the job you seek is required please'
+		},
+		contactperson: [
+			{
+				name: String,
+				telephone: Number,
+				required: 'A contact name and number is required please'
+			}
+		]
 	},
 	experiencerequired: {
 		type: [ String ],
@@ -24,20 +31,22 @@ const seekProfileSchema = new Schema({
 	joblocation: {
 		type: String,
 		enum: [ 'office', 'remote', 'any' ],
-		required: true
+		required: 'Do you require the developer on site? Or could the job be done 													remotely?'
 	},
 	responsibilities: {
 		type: String,
-		enum: [ 'develope', 'maintain', 'both' ]
+		enum: [ 'develope', 'maintain', 'extend', 'all of the above' ],
+		required:
+			'Do you need a new app developed? Or does the work you seek require only 									enhancements to and maintenance of an existing app?'
 	},
-	salaryoffered: {
+	salaryoffer: {
 		type: Boolean,
-		required: true
+		required: 'Are you offering a salary?'
 	},
-	jobtype: {
+	jobmode: {
 		type: [ String ],
 		enum: [ 'full-time', 'part-time' ],
-		required: true
+		required: 'Do you expect the developer to do the job full-time or part-time?'
 	},
 	workhours: {
 		type: [ String ]

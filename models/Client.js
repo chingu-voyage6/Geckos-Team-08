@@ -5,11 +5,13 @@ const Schema = mongoose.Schema;
 const ClientSchema = new Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
+		enum: [ 'dev', 'org' ]
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	password: {
 		type: String,

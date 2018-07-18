@@ -10,41 +10,35 @@ const orgProfileSchema = new Schema({
 	clienthandle: {
 		type: String
 	},
-	organisation: {
-		type: String,
-		required: true
-	},
 	legalname: {
 		type: String
 	},
 	contactperson: {
 		type: String,
-		required: true
+		required: 'A contact person is required'
 	},
-	telephone: {
+	contactnumber: {
 		type: Number,
-		required: true
+		required: 'A contact number is required'
 	},
 	location: {
-		type: String
+		type: String,
+		required: 'Where are you based?'
 	},
 	website: {
 		type: String
 	},
-	address: {
-		type: String
-	},
 	email: {
 		type: String,
-		required: true
+		required: 'A contact email is required'
 	},
 	description: {
 		type: String,
-		required: true,
+		required: 'A brief description of your organisation is required',
 		min: 40
 	},
-	avatar: {
-		type: String
+	profilepix: {
+		type: Buffer
 	},
 	numberofemployees: {
 		type: Number

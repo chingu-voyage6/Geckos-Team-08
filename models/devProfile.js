@@ -39,6 +39,7 @@ const devProfileSchema = new Schema({
 		{
 			title: {
 				type: String,
+				enum: [ 'Senior', 'Mid', 'Junior', 'Student', 'Instructor' ],
 				required: true
 			},
 			company: {
@@ -68,7 +69,7 @@ const devProfileSchema = new Schema({
 		{
 			institution: {
 				type: String,
-				required: true
+				required: 'Where or how did you learn your skills?'
 			},
 			certification: {
 				type: String,

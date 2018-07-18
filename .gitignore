@@ -7,7 +7,6 @@ package-lock.json
 /validation/is-empty.js
 /validation/login.js
 /validation/register.js
-/models/Client.js
 /models/devProfile.js
 /models/orgProfile.js
 /models/seekProfile.js

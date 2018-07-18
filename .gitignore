@@ -10,3 +10,4 @@ package-lock.json
 /models/devProfile.js
 /models/orgProfile.js
 /models/seekProfile.js
+.vscode

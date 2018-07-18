@@ -2,5 +2,12 @@
 pseudocode.text
 package-lock.json
 /config/keys.js
-/validation
-/models
+/config/passport.js
+/validation/dev-profile.js
+/validation/is-empty.js
+/validation/login.js
+/validation/register.js
+/models/Client.js
+/models/devProfile.js
+/models/orgProfile.js
+/models/seekProfile.js

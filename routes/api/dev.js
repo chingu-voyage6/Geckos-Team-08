@@ -110,7 +110,8 @@ apiRouter.post('/experience', passport.authenticate('jwt', { session: false }), 
 
 	devProfile.findOne({ client: req.client.id }).then((dev) => {
 		const newExp = {
-			title: req.body.title, // Return here to work on ENUM options
+			// ENUM options: [Senior, Mid, Junior, Student, Instructor]
+			title: req.body.title,
 			company: req.body.company,
 			location: req.body.location,
 			from: req.body.from,

@@ -1,13 +1,8 @@
 /node_modules
 pseudocode.text
 package-lock.json
-/config/keys.js
-/config/passport.js
-/validation/dev-profile.js
-/validation/is-empty.js
-/validation/login.js
-/validation/register.js
+/config
 /models/devProfile.js
-/models/orgProfile.js
 /models/seekProfile.js
+/validations
 .vscode

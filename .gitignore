@@ -4,6 +4,5 @@ package-lock.json
 /config
 /routes/api/dev.js
 /models/devProfile.js
-/models/seekProfile.js
 /validations
 .vscode

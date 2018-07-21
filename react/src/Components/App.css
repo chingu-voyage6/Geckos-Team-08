@@ -1,0 +1,203 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background-image: linear-gradient(
+      rgba(0, 82, 78, 0.75) rgba(0, 82, 78, 0.75)
+        /* to bottom rgba(131, 218, 213, 0.8),
+      rgba(138, 185, 187, 0.445) */
+    ),
+    url(../Images/rawpixel-660725-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root,
+.App {
+  height: 100%;
+}
+
+/*============================
+            Navbar
+=============================*/
+
+/* .ui.secondary.inverted.pointing.menu {
+  font-size: 20px;
+  margin-left: 75px;
+  margin-right: 75px;
+  border: none;
+} */
+
+/* .ui.floated.header {
+  float: left;
+  /* margin-top: 21px;
+  margin-right: 4em;
+  margin-left: 1em;
+  color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(60%);
+   font-size: 20px;
+} */
+
+h4.header {
+  margin-right: 2em;
+  margin-left: 2em;
+  color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(60%);
+}
+
+.brand {
+  height: 100%;
+  padding-bottom: 1.5em;
+}
+
+.ui.menu {
+  border-radius: 0;
+}
+
+/* .ui.inverted.menu {
+  background: #00b4db;
+  background: -webkit-linear-gradient(to right, #0083b0, #00b4db);
+  background: linear-gradient(to right, #0083b0, #00b4db);
+} */
+
+/* .ui.inverted.pointing.menu .active.item:after {
+  background: #00b4db !important;
+}
+
+.ui.inverted.pointing.menu .active.item:hover:after {
+  background: #fff !important;
+} */
+
+.ui.inverted.pointing.menu .active.item:after {
+  background: rgba(0, 181, 173) !important;
+}
+
+.ui.inverted.pointing.menu .active.item:hover:after {
+  background: #fff !important;
+}
+
+/*============================
+            Sidebar
+=============================*/
+
+.sidebar-wrapper {
+  height: 92.75%;
+}
+
+.ui.image {
+  height: 100%;
+  width: 100%;
+}
+
+.close {
+  color: #fff;
+  text-shadow: none;
+}
+
+.close:focus,
+.close:hover {
+  color: #fff;
+}
+
+.close.mini.icon {
+  padding-top: 0.15em;
+}
+
+.close.mini.icon:hover {
+  color: #ccc;
+}
+
+.item.close-btn {
+  padding: 0.35em !important;
+}
+
+.ui.attached.menu:not(.tabular) {
+  border: none;
+  background: rgba(0, 181, 173);
+}
+
+.ui.menu .item {
+  color: #fff;
+}
+
+.ui.menu a.item:active,
+.ui.secondary.menu a.item:hover {
+  color: #ccc;
+  cursor: pointer;
+  background: transparent;
+}
+
+.ui.inverted.menu a.item:hover {
+  color: #ccc;
+}
+
+/*============================
+            Home
+=============================*/
+
+.homepage-wrapper {
+  height: 100%;
+}
+
+/*============================
+           register
+=============================*/
+.form-container {
+  /* background-color: #00a4cd;
+  width: 25%;
+  height: 500px;
+  margin: 250px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ui.form .fields {
+  display: block;
+}
+
+.ui.form input[type="text"]:focus,
+.ui.form input[type="password"]:focus {
+  border-color: rgba(0, 181, 173, 0.75);
+}
+
+/* Change the icon color when the input field get's focused */
+.ui.form input[type="text"]:focus + .at.icon,
+.ui.form input[type="password"]:focus + .key.icon {
+  color: rgba(0, 181, 173, 0.75);
+}
+
+.register-container {
+  width: 33%;
+}
+
+/*============================
+          Mediaqueries
+=============================*/
+
+@media screen and (max-width: 1050px) {
+  .register-container {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  h1.homepage-heading {
+    margin-top: -18em;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .register-container {
+    width: 65%;
+  }
+}

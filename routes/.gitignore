@@ -1,0 +1,11 @@
+/node_modules 
+/config
+/validation
+/models/Clientgroup.js
+/models/devProfile.js
+/models/seekProfile.js
+/routes/api/dev.js
+routes/api.seek.js 
+pseudocode.text
+package-lock.json
+Thumbs.db

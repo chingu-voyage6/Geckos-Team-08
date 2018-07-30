@@ -1,0 +1,10 @@
+/node_modules 
+/config
+/validation
+/models/Clientgroup.js
+/models/devProfile.js
+/models/seekProfile.js
+/routes/api/dev.js 
+pseudocode.text
+package-lock.json 
+.vscode 

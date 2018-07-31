@@ -4,14 +4,19 @@
 	"description": "Web app for Chingu Dev Project Ideas",
 	"main": "server.js",
 	"scripts": {
+		"frontend-install": "npm install --prefix frontend",
 		"start": "node server.js",
-		"server": "nodemon server.js"
+		"server": "nodemon server.js",
+		"frontend": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run server\" \"npm run frontend\""
 	},
 	"author": "O M Hix",
 	"license": "MIT",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.18.3",
+		"concurrently": "^3.6.1",
+		"create-react-app": "^1.5.2",
 		"eslint": "^5.2.0",
 		"express": "^4.16.3",
 		"gravatar": "^1.6.0",

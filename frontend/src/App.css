@@ -30,7 +30,7 @@ img {
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 .navbar,
-.home-callout {
+.landing-callout {
 	background: #bec4d1;
 	background: -webkit-linear-gradient(to top, #243b55, #141e30);
 	background: linear-gradient(to top, #243b55, #141e30);
@@ -52,6 +52,16 @@ img {
 }
 
 .latest-dev_profiles-img {
+	width: 40px;
+	height: 40px;
+}
+
+.latest-org_profiles-img {
+	width: 40px;
+	height: 40px;
+}
+
+.latest-seek_profiles-img {
 	width: 40px;
 	height: 40px;
 }

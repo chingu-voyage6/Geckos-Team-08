@@ -1,1 +1,2 @@
 export const GET_ERRORS = 'GET_ERRORS';
+export const SET_CURRENT_CLIENT = 'SET_CURRENT_CLIENT';

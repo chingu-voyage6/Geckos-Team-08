@@ -49,3 +49,15 @@ export const setCurrentClient = (decoded) => {
 		payload: decoded
 	};
 };
+
+// Log client out
+export const logoutClient = () => (dispatch) => {
+	// Remove token from localStorage
+	localStorage.removeItem('jwtToken');
+
+	// Remove auth header, reject future requests
+	setAuthToken(false);
+
+	// Set current client to {}, set isAuthenticated to false
+	dispatch(setCurrentClient({}));
+};

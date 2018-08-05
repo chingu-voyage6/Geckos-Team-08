@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutClient } from '../../actions/devProfileActions';
+import { clearCurrentDevProfile } from '../../actions/devProfileActions';
 
 class Navbar extends Component {
 	render() {

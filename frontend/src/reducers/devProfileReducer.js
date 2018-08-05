@@ -26,6 +26,11 @@ export default function(state = initialState, action) {
 				devProfile: action.payload,
 				loading: false
 			};
+		case CLEAR_CURRENT_DEV_PROFILE:
+			return {
+				...state,
+				devProfile: null
+			};
 		default:
 			return state;
 	}

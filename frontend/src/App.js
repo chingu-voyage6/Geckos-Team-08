@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-import { setCurrentClient } from './actions/authActions';
+import { setCurrentClient, logoutClient } from './actions/authActions';
 import { clearCurrentDevProfile } from './actions/devProfileActions';
 
 import { Provider } from 'react-redux';
@@ -15,7 +15,6 @@ import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 
 import './App.css';
-import { clearCurrentDevProfile } from './actions/devProfileActions';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -29,7 +28,7 @@ if (localStorage.jwtToken) {
 	store.dispatch(setCurrentClient(decoded));
 
 	// Check for expired token
-	const CurrentTime = Date.now() / 1000;
+	const currentTime = Date.now() / 1000;
 	if (decoded.exp < currentTime) {
 		// Logout client
 		store.dispatch(logoutClient());

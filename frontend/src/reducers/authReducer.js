@@ -12,17 +12,10 @@ export default function(state = initialState, action) {
 		case SET_CURRENT_CLIENT:
 			return {
 				...state,
-				isAuthenticated: action.payload,
+				isAuthenticated: !isEmpty(action.payload),
 				client: action.payload
 			};
 		default:
 			return state;
 	}
 }
-
-// export default function(state = initialState, action) {
-// 	switch (action.type) {
-// 		default:
-// 			return state;
-// 	}
-// }

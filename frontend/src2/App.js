@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentClient, logoutClient } from './actions/authActions';
-import { clearCurrentDev } from './actions/devActions';
+import { clearCurrentDevProfile } from './actions/devProfileActions';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -34,7 +34,7 @@ if (localStorage.jwtToken) {
 		store.dispatch(logoutClient());
 
 		// Clear current dev profile
-		store.dispatch(clearCurrentDev());
+		store.dispatch(clearCurrentDevProfile());
 
 		// Redirect to login - or where? *****
 		window.location.href = '/login';

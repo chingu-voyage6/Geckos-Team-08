@@ -1,0 +1,107 @@
+img {
+	width: 100%;
+}
+
+.landing-callout {
+	background-size: cover;
+	background: url('./img/desert.jpg') no-repeat;
+	background-position: center;
+}
+
+.landing-container {
+	height: 90vh;
+}
+
+.link-style1 {
+	margin-top: 50px;
+	padding-top: 80px;
+	background-color: blue;
+}
+
+.link-style2 {
+	margin-top: 50px;
+	padding-top: 80px;
+	background-color: green;
+}
+
+nav,
+.nav-wrapper {
+	max-width: 1000px;
+	padding: 0 16px;
+	margin: 0 auto;
+	background-color: blue;
+}
+
+section {
+	padding: 48px 0;
+}
+
+section#footer {
+	padding: 24px 0;
+}
+
+h1 {
+	font-weight: 300;
+}
+
+p {
+	font-size: 16px;
+}
+
+.stat p {
+	text-transform: uppercase;
+}
+
+.stats {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.stat {
+	border: 1px solid grey;
+	border-left: 1px solid grey;
+	width: calc(100% * (1/2));
+	padding: 32px;
+	text-align: center;
+}
+
+.flex-dir-col {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.jc-center {
+	justify-content: center;
+}
+
+.jc-space-between {
+	justify-content: space-between;
+}
+
+.m-r-16 {
+	margin-right: 16px;
+}
+
+.latest-dev-profiles-img {
+	width: 40px;
+	height: 40px;
+}
+
+.latest-org-profiles-img {
+	width: 40px;
+	height: 40px;
+}
+
+.latest-seek-profiles-img {
+	width: 40px;
+	height: 40px;
+}
+
+.card-form {
+	opacity: 0.9;
+}
+
+.form-control::placeholder {
+	color: #bbb !important;
+}

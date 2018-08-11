@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
@@ -94,16 +93,6 @@ class Register extends Component {
 									onChange={this.onChange}
 									error={errors.password2}
 								/>
-								<div className="form-group">
-									<select className="custom-select" required>
-										<option value="">Choose client group...</option>
-										<option value="1">Developer</option>
-										<option value="2">Organisation</option>
-									</select>
-									<div className="clientgroup">
-										Confirm if you are a developer or an organisation here
-									</div>
-								</div>
 								<input type="submit" className="btn btn-info btn-block mt-4" />
 							</form>
 						</div>

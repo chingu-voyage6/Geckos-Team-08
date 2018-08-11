@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutClient } from '../../actions/authActions';
-import { clearCurrentDev } from '../../actions/devActions';
+import { clearCurrentDevProfile } from '../../actions/devProfileActions';
 
 class Navbar extends Component {
 	onLogoutClick(e) {
 		e.preventDefault();
-		this.props.clearCurrentDev();
+		this.props.clearCurrentDevProfile();
 		this.props.logoutClient();
 	}
 
@@ -32,7 +32,7 @@ class Navbar extends Component {
 			</ul>
 		);
 
-		const guestLinks = (
+		const guestAuthLinks = (
 			<ul className="navbar-nav ml-auto">
 				<li className="nav-item">
 					<Link className="nav-link" to="/register">
@@ -47,10 +47,10 @@ class Navbar extends Component {
 			</ul>
 		);
 
-		const orgLinks = (
+		const orgAuthLinks = (
 			<ul className="navbar-nav mr-auto">
 				<li className="nav-item">
-					<Link className="nav-link" to="/org">
+					<Link className="nav-link" to="/org_profiles">
 						{' '}
 						Organisations
 					</Link>
@@ -58,11 +58,11 @@ class Navbar extends Component {
 			</ul>
 		);
 
-		const devLinks = (
+		const devAuthLinks = (
 			<div className="collapse navbar-collapse" id="mobile-nav">
 				<ul className="navbar-nav mr-auto">
 					<li className="nav-item">
-						<Link className="nav-link" to="/dev">
+						<Link className="nav-link" to="/dev_profiles">
 							{' '}
 							Developers
 						</Link>
@@ -71,10 +71,10 @@ class Navbar extends Component {
 			</div>
 		);
 
-		const seekLinks = (
+		const orgSeekAuthLinks = (
 			<ul className="navbar-nav mr-auto">
 				<li className="nav-item">
-					<a className="nav-link" href="seek.html">
+					<a className="nav-link" href="seek_profiles.html">
 						{' '}
 						Seeking..
 					</a>
@@ -83,41 +83,34 @@ class Navbar extends Component {
 		);
 
 		return (
-			<nav className="navbar navbar-expand-lg teal lighten-1 bg-dark">
-				<div className="nav-wrapper">
+			<nav className="navbar navbar-light navbar-static-top role=navigation mb-4">
+				<div className="container">
 					<Link className="navbar-brand" to="/">
 						!SocialCoder
 					</Link>
-					<ul id="mobile-nav" className="right hide-on-med-and-down">
-						>
-						<Link className="nav-link right" to="/login">
-							{' '}
-							Login
-						</Link>
-						<Link className="nav-link right" to="/register">
-							{' '}
-							Sign Up
-						</Link>
-					</ul>
+					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+						<span className="navbar-toggler-icon" />
+					</button>
+
 					<div className="collapse navbar-collapse" id="mobile-nav">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item">
-								<Link className="nav-link" to="/dev">
+								<Link className="nav-link" to="/dev-profile">
 									{' '}
 									Developer
 								</Link>
 							</li>
 						</ul>
-						{isAuthenticated ? [ devLinks && authLinks && seekLinks ] : guestLinks}
+						{isAuthenticated ? devAuthLinks : orgSeekAuthLinks}
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item">
-								<Link className="nav-link" to="/org">
+								<Link className="nav-link" to="/org-profile">
 									{' '}
 									Organisation
 								</Link>
 							</li>
 						</ul>
-						{isAuthenticated ? [ orgLinks && seekLinks ] : guestLinks}
+						{isAuthenticated ? orgAuthLinks : guestAuthLinks}
 					</div>
 				</div>
 			</nav>
@@ -134,4 +127,4 @@ const mapStateToProps = (state) => ({
 	auth: state.auth
 });
 
-export default connect(mapStateToProps, { logoutClient, clearCurrentDev })(Navbar);
+export default connect(mapStateToProps, { logoutClient, clearCurrentDevProfile })(Navbar);

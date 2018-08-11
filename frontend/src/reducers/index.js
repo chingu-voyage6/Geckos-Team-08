@@ -1,14 +1,10 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import errorReducer from './errorReducer';
-import devProfileReducer from './devProfileReducer';
-import orgProfileReducer from './orgProfileReducer';
-import seekProfileReducer from './seekProfileReducer';
+import devReducer from './devReducer';
 
 export default combineReducers({
 	auth: authReducer,
 	errors: errorReducer,
-	devProfile: devProfileReducer,
-	orgProfile: orgProfileReducer,
-	seekProfile: seekProfileReducer
+	devProfile: devReducer
 });

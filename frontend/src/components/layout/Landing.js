@@ -11,8 +11,9 @@ class Landing extends Component {
 
 	render() {
 		return (
-			<section className="landing-callout blue lighten-4 text-center container-fluid">
+			<section className="landing text-center container-fluid">
 				<h3>Welcome to !SocialCoder</h3>
+				<br />
 				<div className="container valign-wrapper jc-center">
 					<div className="valign center-align black-text">
 						<p className="big">

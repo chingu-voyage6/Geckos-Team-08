@@ -18,6 +18,11 @@ class Navbar extends Component {
 		const authLinks = (
 			<ul className="navbar-nav ml-auto">
 				<li className="nav-item">
+					<Link className="nav-link" to="/dashboard">
+						Dashboard
+					</Link>
+				</li>
+				<li className="nav-item">
 					<a href="" onClick={this.onLogoutClick.bind(this)} className="nav-link">
 						<img
 							className="rounded-circle"
@@ -36,7 +41,7 @@ class Navbar extends Component {
 			<ul className="navbar-nav ml-auto">
 				<li className="nav-item">
 					<Link className="nav-link" to="/register">
-						Register
+						Sign Up
 					</Link>
 				</li>
 				<li className="nav-item">
@@ -52,7 +57,7 @@ class Navbar extends Component {
 				<li className="nav-item">
 					<Link className="nav-link" to="/org">
 						{' '}
-						Organisations
+						Organisation
 					</Link>
 				</li>
 			</ul>
@@ -83,22 +88,39 @@ class Navbar extends Component {
 		);
 
 		return (
-			<nav className="navbar navbar-expand-lg teal lighten-1 bg-dark">
-				<div className="nav-wrapper">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light">
+				<div className="container">
 					<Link className="navbar-brand" to="/">
 						!SocialCoder
 					</Link>
-					<ul id="mobile-nav" className="right hide-on-med-and-down">
-						>
-						<Link className="nav-link right" to="/login">
-							{' '}
-							Login
-						</Link>
-						<Link className="nav-link right" to="/register">
-							{' '}
-							Sign Up
-						</Link>
-					</ul>
+					<button
+						className="navbar-toggler"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbar-nav"
+						aria-controls="navbar-nav"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span className="navbar-toggler-icon" />
+					</button>
+
+					<div className="collapse navbar-collapse" id="navbar-nav">
+						<ul className="navbar-nav mr-auto">
+							<span className="sr-only">(current) </span>
+						</ul>
+						{isAuthenticated ? authLinks : guestLinks}
+					</div>
+					<div className="collapse navbar-collapse" id="mobile-nav">
+						<ul className="navbar-nav mr-auto">
+							<li className="nav-item">
+								<Link className="nav-link right" to="/register">
+									{' '}
+									Sign Up
+								</Link>
+							</li>
+						</ul>
+					</div>
 					<div className="collapse navbar-collapse" id="mobile-nav">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item">

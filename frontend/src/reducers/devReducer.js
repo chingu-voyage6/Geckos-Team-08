@@ -7,7 +7,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-	dev: null,
+	devProfile: null,
 	//	devProfiles: null,
 	loading: false
 };
@@ -22,13 +22,13 @@ export default function(state = initialState, action) {
 		case GET_DEV:
 			return {
 				...state,
-				dev: action.payload,
+				devProfile: action.payload,
 				loading: false
 			};
 		case CLEAR_CURRENT_DEV:
 			return {
 				...state,
-				dev: null
+				devProfile: null
 			};
 		default:
 			return state;

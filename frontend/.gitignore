@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 
+/.vs
+/src/actions
+/src/components/dashboard
+
 # testing
 /coverage
 

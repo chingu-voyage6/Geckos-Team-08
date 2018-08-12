@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-	GET_DEV_PROFILE,
+	GET_DEV,
 	DEV_LOADING,
 	//GET_ERRORS,
 	//SET_CURRENT_CLIENT
@@ -15,13 +15,13 @@ export const getCurrentDev = () => (dispatch) => {
 		.get('/api/dev')
 		.then((res) =>
 			dispatch({
-				type: GET_DEV_PROFILE,
+				type: GET_DEV,
 				payload: res.data
 			})
 		)
 		.catch((err) =>
 			dispatch({
-				type: GET_DEV_PROFILE,
+				type: GET_DEV,
 				payload: {}
 			})
 		);

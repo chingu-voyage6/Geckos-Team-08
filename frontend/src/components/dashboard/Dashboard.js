@@ -10,11 +10,11 @@ class Dashboard extends Component {
 
 	render() {
 		const { client } = this.props.auth;
-		const { dev, loading } = this.props.dev;
+		const { devProfile, loading } = this.props.devProfile;
 
 		let dashboardContent;
 
-		if (dev === null || loading) {
+		if (devProfile === null || loading) {
 			dashboardContent = <h4>Loading...</h4>;
 		} else {
 			dashboardContent = <h1>Grrr...</h1>;
@@ -38,12 +38,12 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
 	getCurrentDev: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired,
-	dev: PropTypes.object.isRequired
+	devProfile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-	dev: state.dev,
+	devProfile: state.devProfile,
 	auth: state.auth
 });
 
-export default connect(null, { getCurrentDev })(Dashboard);
+export default connect(mapStateToProps, { getCurrentDev })(Dashboard);

@@ -1,5 +1,5 @@
 import {
-	GET_DEV_PROFILE,
+	GET_DEV,
 	DEV_LOADING,
 	//GET_ERRORS,
 	//SET_CURRENT_CLIENT,
@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
 				...state,
 				loading: true
 			};
-		case GET_DEV_PROFILE:
+		case GET_DEV:
 			return {
 				...state,
 				dev: action.payload,

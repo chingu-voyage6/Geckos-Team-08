@@ -1,9 +1,9 @@
 export const GET_ERRORS = 'GET_ERRORS';
 export const SET_CURRENT_CLIENT = 'SET_CURRENT_CLIENT';
 //export const GET_CURRENT_CLIENT = 'GET_CURRENT_CLIENT';
-export const GET_DEV_PROFILE = 'GET_DEV_PROFILE';
+export const GET_DEV = 'GET_DEV';
 export const DEV_LOADING = 'DEV_LOADING';
-export const GET_DEV_PROFILES = 'GET_DEV_PROFILES';
+export const GET_DEVS = 'GET_DEVS';
 export const DEV_PROFILE_NOT_FOUND = 'DEV_PROFILE_NOT_FOUND';
 export const CLEAR_CURRENT_DEV = 'CLEAR_CURRENT_DEV';
 export const GET_ORG_PROFILE = 'GET_ORG_PROFILE';

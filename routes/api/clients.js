@@ -65,7 +65,7 @@ apiRouter.post('/register', (req, res) => {
 // @clients   POST api/clients/login
 // @desc      Log in client / Return JWT token route
 // @access    Public
-apiRouter.post('/login', (req, res, next) => {
+apiRouter.post('/login', (req, res) => {
 	const { errors, isValid } = validateLoginInput(req.body);
 
 	// Check Validation
@@ -96,8 +96,6 @@ apiRouter.post('/login', (req, res, next) => {
 						success: true,
 						token: 'Bearer ' + token
 					});
-					//req.client.id = decoded.id;
-					next();
 				});
 			} else {
 				errors.password = 'Password incorrect';
@@ -110,13 +108,12 @@ apiRouter.post('/login', (req, res, next) => {
 // @route     GET api/clients/current
 // @desc      Return current client
 // @access    Private
-apiRouter.get('/current', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-	const name = req.body.name;
-	const email = req.body.email;
-	//	const clienthandle = req.body.clienthandle;
-
-	res.json('touch any key to continue..');
-	next();
+apiRouter.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+	res.json({
+		id: req.client.id,
+		name: req.client.name,
+		email: req.client.email
+	});
 });
 
 module.exports = apiRouter;

@@ -6,6 +6,7 @@
 /.vs
 /src/actions
 /src/components/dashboard
+/components/common/PrivateRoute.js
 
 # testing
 /coverage

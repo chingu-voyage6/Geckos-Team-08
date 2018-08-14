@@ -32,6 +32,12 @@ class CreateDevProfile extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.errors) {
+			this.setState({ errors: nextProps.errors });
+		}
+	}
+
 	onSubmit(e) {
 		e.preventDefault();
 
@@ -43,7 +49,60 @@ class CreateDevProfile extends Component {
 	}
 
 	render() {
-		const { errors } = this.state;
+		const { errors, displaySocialInputs } = this.state;
+
+		let socialInputs;
+
+		if (displaySocialInputs) {
+			socialInputs = (
+				<div>
+					<InputGroup
+						placeholder="Twitter Profile URL"
+						name="twitter"
+						icon="fab fa-twitter"
+						value={this.state.twitter}
+						onChange={this.onChange}
+						errors={errors.twitter}
+					/>
+
+					<InputGroup
+						placeholder="Facebook Profile URL"
+						name="facebook"
+						icon="fab fa-facebook"
+						value={this.state.facebook}
+						onChange={this.onChange}
+						errors={errors.facebook}
+					/>
+
+					<InputGroup
+						placeholder="Linkedin Profile URL"
+						name="linkedin"
+						icon="fab fa-linkedin"
+						value={this.state.linkedin}
+						onChange={this.onChange}
+						errors={errors.linkedin}
+					/>
+
+					<InputGroup
+						placeholder="Youtube Profile URL"
+						name="youtube"
+						icon="fab fa-youtube"
+						value={this.state.youtube}
+						onChange={this.onChange}
+						errors={errors.youtube}
+					/>
+
+					<InputGroup
+						placeholder="Instagram Profile URL"
+						name="instagram"
+						icon="fab fa-instagram"
+						value={this.state.instagram}
+						onChange={this.onChange}
+						errors={errors.instagram}
+					/>
+				</div>
+			);
+		}
 
 		// Select (array of) options for status
 		const options = [
@@ -83,9 +142,74 @@ class CreateDevProfile extends Component {
 									name="status"
 									value={this.state.status}
 									onChange={this.onChange}
+									options={options}
 									error={errors.status}
-									info="Share information with interested parties where you are this present time in your career"
+									info="Share information with interested parties where you are at this present time in your career"
 								/>
+								<TextFieldGroup
+									placeholder="Company"
+									name="company"
+									value={this.state.company}
+									onChange={this.onChange}
+									error={errors.company}
+									info="Company you work for or your own company, if any"
+								/>
+								<TextFieldGroup
+									placeholder="Website"
+									name="website"
+									value={this.state.website}
+									onChange={this.onChange}
+									error={errors.website}
+									info="Website of company you work for or your own website, if any"
+								/>
+								<TextFieldGroup
+									placeholder="Location"
+									name="location"
+									value={this.state.location}
+									onChange={this.onChange}
+									error={errors.location}
+									info="City and country, or city state and country (e.g, London, UK"
+								/>
+								<TextFieldGroup
+									placeholder="Skills"
+									name="skills"
+									value={this.state.skills}
+									onChange={this.onChange}
+									error={errors.skills}
+									info="Please state skills you have using comma separated values (e.g, HTML, CSS, JavaScript, NodeJS, Ruby on Rails, PHP etc)"
+								/>
+								<TextFieldGroup
+									placeholder="Github username"
+									name="githubusername"
+									value={this.state.githubusername}
+									onChange={this.onChange}
+									error={errors.githubusername}
+									info="To show your repos and github link, please enter your username, if any"
+								/>
+								<TextAreaFieldGroup
+									placeholder="Short Personal Info"
+									name="bio"
+									value={this.state.bio}
+									onChange={this.onChange}
+									error={errors.bio}
+									info="Give us a brief information about yourself"
+								/>
+
+								<div className="mb-3">
+									<button
+										onClick={() => {
+											this.setState((prevState) => ({
+												displaySocialInputs: !prevState.displaySocialInputs
+											}));
+										}}
+										className="btn btn-light"
+									>
+										Add Social Network Links
+									</button>
+									<span className="text-muted">Optional</span>
+								</div>
+								{socialInputs}
+								<input type="submit" value="Submit" className="btn btn-info btn-block mt-4" />
 							</form>
 						</div>
 					</div>

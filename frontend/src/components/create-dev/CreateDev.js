@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
 import SelectListGroup from '../common/SelectListGroup';
+import { createDev } from '../../actions/devActions';
 
 class CreateDevProfile extends Component {
 	constructor(props) {
@@ -12,7 +14,7 @@ class CreateDevProfile extends Component {
 		this.state = {
 			displaySocialInputs: false,
 			clienthandle: '',
-			//clientgroup: '',
+			clientgroup: '',
 			company: '',
 			website: '',
 			location: '',
@@ -41,7 +43,24 @@ class CreateDevProfile extends Component {
 	onSubmit(e) {
 		e.preventDefault();
 
-		console.log('submit');
+		const devProfileData = {
+			clientgroup: this.state.clientgroup,
+			company: this.state.company,
+			clienthandle: this.state.clienthandle,
+			website: this.state.website,
+			location: this.state.location,
+			status: this.state.status,
+			skills: this.state.skills,
+			githubusername: this.state.githubusername,
+			bio: this.state.bio,
+			twitter: this.state.twitter,
+			facebook: this.state.facebook,
+			linkedin: this.state.linkedin,
+			youtube: this.state.youtube,
+			instagram: this.state.instagram
+		};
+
+		this.props.createDev(devProfileData, this.props.history);
 	}
 
 	onChange(e) {
@@ -130,7 +149,7 @@ class CreateDevProfile extends Component {
 							<small className="d-block pb-3">* = required fields</small>
 							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup
-									placeholder="* Dev clienthandle"
+									placeholder="* Developer handle"
 									name="handle"
 									value={this.state.clienthandle}
 									onChange={this.onChange}
@@ -229,4 +248,4 @@ const mapStateToProps = (state) => ({
 	errors: state.errors
 });
 
-export default connect(mapStateToProps)(CreateDevProfile);
+export default connect(mapStateToProps, { createDev })(withRouter(CreateDevProfile));

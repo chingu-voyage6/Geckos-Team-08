@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerClient } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
+import SelectListGroup from '../common/SelectListGroup';
 
 class Register extends Component {
 	constructor() {
@@ -15,6 +16,7 @@ class Register extends Component {
 			email: '',
 			password: '',
 			password2: '',
+			clientgroup: '',
 			errors: {}
 		};
 
@@ -45,7 +47,8 @@ class Register extends Component {
 			name: this.state.name,
 			email: this.state.email,
 			password: this.state.password,
-			password2: this.state.password2
+			password2: this.state.password2,
+			clientgroup: this.state.clientgroup
 		};
 
 		this.props.registerClient(newClient, this.props.history);
@@ -53,6 +56,13 @@ class Register extends Component {
 
 	render() {
 		const { errors } = this.state;
+
+		// Select (array of) options for clientgroup
+		const options = [
+			{ label: 'Select your clientgroup...', value: '' },
+			{ label: 'Developer', value: 'Developer' },
+			{ label: 'Organisation', value: 'Organisation' }
+		];
 
 		return (
 			<div className="register">
@@ -94,16 +104,14 @@ class Register extends Component {
 									onChange={this.onChange}
 									error={errors.password2}
 								/>
-								<div className="form-group">
-									<select className="custom-select" required>
-										<option value="">Choose client group...</option>
-										<option value="1">Developer</option>
-										<option value="2">Organisation</option>
-									</select>
-									<div className="clientgroup">
-										Confirm if you are a developer or an organisation here
-									</div>
-								</div>
+								<SelectListGroup
+									name="clientgroup"
+									value={this.state.clientgroup}
+									onChange={this.onChange}
+									options={options}
+									error={errors.clientgroup}
+									info="Select: Are you a developer? Or an Organisation?"
+								/>
 								<input type="submit" className="btn btn-info btn-block mt-4" />
 							</form>
 						</div>

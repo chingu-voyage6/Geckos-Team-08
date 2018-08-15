@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-/**/
+/*
 const returnUrl = '/';
+
 
 // Validation
 function validator(organisation) {
@@ -16,11 +17,12 @@ function validator(organisation) {
 	//	}
 }
 
-/*
+
 const clientgroupSchema = new Schema({
 	org: String,
 	dev: String
 });
+
 */
 
 // Create Schema
@@ -56,12 +58,10 @@ const ClientSchema = new Schema({
 		type: String,
 		required: true
 	},
-	/*
-	organisation: {
-		type: Boolean,
-		default: true
+	clientgroup: {
+		type: [ String ],
+		required: true
 	},
-	*/
 	email: {
 		type: String,
 		required: true,

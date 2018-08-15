@@ -150,7 +150,7 @@ class CreateDevProfile extends Component {
 							<form onSubmit={this.onSubmit}>
 								<TextFieldGroup
 									placeholder="* Developer handle"
-									name="handle"
+									name="clienthandle"
 									value={this.state.clienthandle}
 									onChange={this.onChange}
 									error={errors.clienthandle}
@@ -190,7 +190,7 @@ class CreateDevProfile extends Component {
 									info="City and country, or city state and country (e.g, London, UK"
 								/>
 								<TextFieldGroup
-									placeholder="Skills"
+									placeholder="* Skills"
 									name="skills"
 									value={this.state.skills}
 									onChange={this.onChange}
@@ -216,6 +216,7 @@ class CreateDevProfile extends Component {
 
 								<div className="mb-3">
 									<button
+										type="button"
 										onClick={() => {
 											this.setState((prevState) => ({
 												displaySocialInputs: !prevState.displaySocialInputs
